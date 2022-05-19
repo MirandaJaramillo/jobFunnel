@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "version": "1.0",
+  "name": "Job Lead Tracker",
+  "permissions": [
+    "tabs"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "search-world.png"
+  }
+}
