@@ -5,11 +5,14 @@ let postingsList = [];
 const deleteBtn = document.getElementById("delete-btn")
 const tabBtn = document.getElementById("save-tab")
 const ulEl = document.getElementById("ul-el")
-const leadsInLocalStorage = JSON.parse(localStorage.getItem("jobLeads"))
+// const leadsInLocalStorage = JSON.parse(localStorage.getItem("jobLeads"))
+const leadsInLocalStorage = JSON.parse(localStorage.getItem("postingsList"))
 
 if(leadsInLocalStorage) {
-  jobLeads = leadsInLocalStorage
-  render(jobLeads)
+  // jobLeads = leadsInLocalStorage
+  // render(jobLeads)
+  postingsList = leadsInLocalStorage
+  render(postingsList)
 }
 
 class Job {
@@ -18,7 +21,6 @@ class Job {
       this.notes = notes;
   }
 }
-
 
 //Chrome Storage
 
@@ -30,30 +32,46 @@ const displayList = document.querySelector("#displayList");
 
 tabBtn.addEventListener("click", () => {
   chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
-    jobLeads.push(tabs[0].url)
-    localStorage.setItem("jobLeads", JSON.stringify(jobLeads))
-    render(jobLeads)
-
-    console.log(notes.value);
-    console.log(jobstage.value);
-    console.log('click')
-
+    // jobLeads.push(tabs[0].url)
+    // localStorage.setItem("jobLeads", JSON.stringify(jobLeads))
+    // render(jobLeads)
+    // postingsList.push(tabs[0].url)
+    let link = tabs[0].url;
+    console.log(tabs[0].url)
     let newJob = new Job();
+    newJob.url = link;
+    postingsList.push(newJob);
+    localStorage.setItem("postingsList", JSON.stringify(postingsList))
+    render(postingsList)
+
+    // let newJob = new Job();
     newJob.notes = notes.value;
     newJob.jobstage = jobstage.value;
     // newJob.link = link;
     console.log(newJob);
-    postingsList.push(newJob);
-    console.log(postingsList);
+    // postingsList.push(newJob);
+    // postingsList.push(newJob.notes);
+    // localStorage.setItem("postingsList", JSON.stringify(postingsList))
+    // render(postingsList)
+    // postingsList.push(newJob.jobstage);
+    // localStorage.setItem("postingsList", JSON.stringify(postingsList))
+    // render(postingsList)
+    // console.log(postingsList);
 
-    const newListItem = document.createElement('li');
-    newListItem.innerText = newJob.notes + " " + newJob.jobstage + " ";
-    displayList.appendChild(newListItem);
+    // const newListItem = document.createElement('li');
+    // newListItem.innerText = newJob.jobstage;
+    // displayList.appendChild(newListItem);
+    // const newNote = document.createElement('p');
+    // newNote.innerText = newJob.notes;
+    // displayList.appendChild(newNote);
+    // const hr = document.createElement('hr');
+    // displayList.appendChild(hr);
   })
 })
 deleteBtn.addEventListener("dblclick", () => {
   localStorage.clear()
-  jobLeads = [];
+  // jobLeads = [];
+  postingsList = [];
   // postingsList = [];
   // var children = displayList.childNodes;
   // for(child in children){
@@ -62,7 +80,8 @@ deleteBtn.addEventListener("dblclick", () => {
   while (displayList.firstChild) {
     displayList.removeChild(displayList.firstChild);
   }
-  render(jobLeads)
+  // render(jobLeads)
+  render(postingsList);
 })
 
 
@@ -76,11 +95,23 @@ deleteBtn.addEventListener("dblclick", () => {
 function render(leads) {
   let listItems = ""
   for(let i = 0; i < leads.length; i++) {
+    // const newListItem = document.createElement('li');
+    // newListItem.innerText = leads[i].jobstage;
+    // const displayList = document.querySelector("#displayList");
+    // displayList.appendChild(newListItem);
+    // const newNote = document.createElement('p');
+    // newNote.innerText = leads[i].notes;
+    // displayList.appendChild(newNote);
+    // const hr = document.createElement('hr');
+    // displayList.appendChild(hr);
     listItems += `
       <li>
-        <a target="_blank" href="${leads[i]}">${leads[i]}</a>
+        ${leads[i].jobstage}
+        <a target="_blank" href="${leads[i].url}">${leads[i].url}</a>
+        ${leads[i].notes}
+        </hr>
       </li>`
-    console.log(leads[i])
+    console.log(leads[i].url)
   }
   ulEl.innerHTML = listItems
 }

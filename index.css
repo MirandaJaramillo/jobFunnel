@@ -14,15 +14,24 @@ body{
   padding: 10px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-width: 400px;
+  padding: 10px;
+}
+
 input[type=text] {
   margin: 8px;
   padding: 10px;
-  border: 3px solid #BDA3E8;
+  height: 100px;
+  border: 3px solid #173078;
 }
 
 button {
-  background-color: #BDA3E8;
-  border: 1px solid #BDA3E8;
+  background-color: #55bfa8;
+  border: 1px solid #55bfa8;
   padding: 10px 20px;
   margin-top: 10px;
   color: white;
@@ -32,7 +41,7 @@ button {
 
 #delete-btn {
   background-color: white;
-  color: #BDA3E8;
+  color: #55bfa8;
   margin-bottom: 10px;
 }
 
@@ -42,9 +51,18 @@ ul {
 
 li {
   padding: 3px;
+  color: #55bfa8;
+  font-weight: 700;
 }
 
 a {
-  color:#BDA3E8;
+  color:#173078;
   font-weight: 700;
+}
+
+label {
+  color:#173078;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 5px;
 }

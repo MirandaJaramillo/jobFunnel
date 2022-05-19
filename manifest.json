@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
   "version": "1.0",
-  "name": "Job Lead Tracker",
+  "name": "CodeSmith Job Funnel",
   "permissions": [
     "tabs"
   ],
   "action": {
     "default_popup": "index.html",
-    "default_icon": "search-world.png"
+    "default_icon": "job-funnel.png"
   }
 }
