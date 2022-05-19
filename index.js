@@ -47,6 +47,7 @@ tabBtn.addEventListener("click", () => {
     // let newJob = new Job();
     newJob.notes = notes.value;
     newJob.jobstage = jobstage.value;
+    localStorage.setItem("postingsList", JSON.stringify(postingsList))
     // newJob.link = link;
     console.log(newJob);
     // postingsList.push(newJob);
@@ -104,13 +105,17 @@ function render(leads) {
     // displayList.appendChild(newNote);
     // const hr = document.createElement('hr');
     // displayList.appendChild(hr);
+    console.log(leads[i].jobstage.value);
     listItems += `
-      <li>
-        ${leads[i].jobstage}
-        <a target="_blank" href="${leads[i].url}">${leads[i].url}</a>
-        ${leads[i].notes}
-        </hr>
-      </li>`
+      <li> ${i+1}.</li> <br/>
+      <p>"${leads[i].notes.value}"</p></br>
+      <a target="_blank" href="${leads[i].url}">${leads[i].url}</a> </br>
+      <li>  
+        ${leads[i].jobstage.value}
+      </li></br>
+      </hr>
+      `
+
     console.log(leads[i].url)
   }
   ulEl.innerHTML = listItems
