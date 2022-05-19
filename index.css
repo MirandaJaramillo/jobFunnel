@@ -58,11 +58,26 @@ li {
 a {
   color:#173078;
   font-weight: 700;
+  text-decoration: none;
 }
 
 label {
-  color:#173078;
+  color:#55bfa8;
   font-weight: 700;
   font-size: 16px;
   padding: 5px;
+}
+img {
+  width: 30px;
+  height: 30px;
+}
+span {
+  font-size: 18px;
+  color:#173078;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+span a {
+  text-decoration: none;
 }

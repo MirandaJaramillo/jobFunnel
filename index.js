@@ -67,7 +67,7 @@ function render() {
   
     console.log(postingsList[i].jobstage.value);
     listItems += `
-      <li> ${i+1}.</li> <br/>
+      <h3> ${i+1}.</h3> <br/>
       <p>${postingsList[i].notes}</p></br>
       <a target="_blank" href=${postingsList[i].url}>${postingsList[i].url}</a> </br>
       <li>  
