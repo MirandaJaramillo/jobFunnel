@@ -1,6 +1,6 @@
 let postingsList = [];
 
-const clearBtn = document.getElementById("delete-btn");
+const clearBtn = document.getElementById("clear-btn");
 const addBtn = document.getElementById("save-tab");
 const displayList = document.getElementById("displayList");
 const leadsInLocalStorage = JSON.parse(localStorage.getItem("postingsList"));
@@ -36,7 +36,7 @@ addBtn.addEventListener("click", () => {
     localStorage.setItem("postingsList", JSON.stringify(postingsList))
   })
 })
-clearBtn.addEventListener("dblclick", () => {
+clearBtn.addEventListener("click", () => {
   localStorage.clear()
   postingsList = [];
 
@@ -58,6 +58,7 @@ function render() {
         ${postingsList[i].jobstage}
       </li></br>
       </hr>
+      `
   }
   displayList.innerHTML = listItems
 }

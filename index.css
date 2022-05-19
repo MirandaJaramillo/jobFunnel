@@ -39,7 +39,7 @@ button {
   align-self: flex-start;
 }
 
-#delete-btn {
+#clear-btn {
   background-color: white;
   color: #55bfa8;
   margin-bottom: 10px;
