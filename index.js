@@ -50,8 +50,7 @@ function render() {
   let listItems = ""
   for(let i = 0; i < postingsList.length; i++) {
     listItems += `
-      <h3> ${i+1}.</h3> <br/>
-      <p>${postingsList[i].notes}</p></br>
+      <h3>${i+1}. ${postingsList[i].notes}</h3></br>
       <a target="_blank" href=${postingsList[i].url}>${postingsList[i].url}</a> </br>
       <li>  
         ${postingsList[i].jobstage}
