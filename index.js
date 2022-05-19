@@ -1,4 +1,5 @@
 let postingsList = [];
+let chromeSyncList = [];
 
 const clearBtn = document.getElementById("clear-btn");
 const addBtn = document.getElementById("save-tab");
@@ -51,14 +52,24 @@ clearBtn.addEventListener("click", () => {
   render();
 })
 
+
 function render() {
+  chrome.storage.sync.get(['key'], function(result) {
+    console.log(postingsList.forEach((post) => {
+      console.log(post.url);
+      console.log(post.notes);
+      console.log(post.jobstage);
+    } ) );
+    chromeSyncList = postingsList;
+  });
+
   let listItems = ""
-  for(let i = 0; i < postingsList.length; i++) {
+  for(let i = 0; i < chromeSyncList.length; i++) {
     listItems += `
-      <h3>${i+1}. ${postingsList[i].notes}</h3></br>
-      <a target="_blank" href=${postingsList[i].url}>${postingsList[i].url}</a> </br>
+      <h3>${i+1}. ${chromeSyncList[i].notes}</h3></br>
+      <a target="_blank" href=${chromeSyncList[i].url}>${chromeSyncList[i].url}</a> </br>
       <li>  
-        ${postingsList[i].jobstage}
+        ${chromeSyncList[i].jobstage}
       </li></br>
       </hr>
       `
