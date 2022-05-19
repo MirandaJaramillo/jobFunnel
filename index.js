@@ -18,7 +18,6 @@ class Job {
 }
 
 //Chrome Storage vs Local Storage
-
 const notes = document.querySelector("#notes");
 const jobstage = document.querySelector("#jobstage");
 
@@ -29,13 +28,13 @@ addBtn.addEventListener("click", () => {
     newJob.url = link;
     postingsList.push(newJob);
     localStorage.setItem("postingsList", JSON.stringify(postingsList))
-    render()
-
     newJob.notes = notes.value;
     newJob.jobstage = jobstage.value;
     localStorage.setItem("postingsList", JSON.stringify(postingsList))
+    render()
   })
 })
+
 clearBtn.addEventListener("click", () => {
   localStorage.clear()
   postingsList = [];
