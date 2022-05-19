@@ -17,7 +17,6 @@ class Job {
   }
 }
 
-//Chrome Storage vs Local Storage
 const notes = document.querySelector("#notes");
 const jobstage = document.querySelector("#jobstage");
 
@@ -31,6 +30,12 @@ addBtn.addEventListener("click", () => {
     newJob.notes = notes.value;
     newJob.jobstage = jobstage.value;
     localStorage.setItem("postingsList", JSON.stringify(postingsList))
+
+    //Chrome Storage Sunc
+    chrome.storage.sync.set({key: postingsList}, function() {
+      console.log('Value is set to ' + postingsList[0].url);
+    });
+
     render()
   })
 })

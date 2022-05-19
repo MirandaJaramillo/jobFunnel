@@ -3,7 +3,8 @@
   "version": "1.0",
   "name": "CodeSmith Job Funnel",
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "action": {
     "default_popup": "index.html",
